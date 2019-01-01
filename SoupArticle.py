@@ -6,7 +6,11 @@ class SoupArticle:
  
     def __init__(self, html):
         self.soup=BeautifulSoup(html, 'html.parser')
-        self.article = self.soup.find_all("div", class_="column-content")[0]
+        
+        try:
+            self.article = self.soup.find_all("div", class_="column-content")[0]
+        except:
+            print("Error while extracting article section from html")
     
     def getTitle(self):
         title = None

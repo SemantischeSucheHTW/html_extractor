@@ -13,7 +13,7 @@ class PageDetails:
         #date of the incident: datetime.date
         self.date = date
 
-        #number of the article: Integer -> maybe as String later? Note that the number can easily be None, so don't rely on it
+        #number of the article: String, can be None!
         self.nr = nr
 
         #text of the article: String

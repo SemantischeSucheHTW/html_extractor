@@ -4,7 +4,7 @@ import datetime
 import re
 
 class HTMLExtractor:
- 
+
     '''
     Constructor
     :param dao: data access object from which RawPageData-Objects can be retrieved and PageDetail-Objects stored to

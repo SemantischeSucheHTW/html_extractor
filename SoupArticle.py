@@ -53,8 +53,9 @@ class SoupArticle:
             nr=int(re.findall("[0-9]+", nrString)[0])
             #nr=re.findall("[0-9]+", nrString)[0]"""
             
+            #looking for something like Nr. 5542 in the raw html article
             nrString = re.findall("Nr\. [0-9]+", self.article.prettify())[0]
-            nr = int(re.findall("[0-9]+", nrString)[0])
+            nr = re.findall("[0-9]+", nrString)[0]
         except:
             print("Error while extracting nr from article")
         return nr

@@ -46,3 +46,4 @@ while True:
     stored_details = extractor.process(order)
     if debug:
         print(f"Stored details for {stored_details}")
+    urlsink.send(order.url)

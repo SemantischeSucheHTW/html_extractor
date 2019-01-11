@@ -28,3 +28,4 @@ class HTMLExtractor:
         details = PageDetails(url, title, location, date, nr, text)
         
         self.dao.storePageDetails(details)
+        return details

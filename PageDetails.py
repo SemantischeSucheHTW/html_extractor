@@ -18,3 +18,6 @@ class PageDetails:
 
         #text of the article: String
         self.text = text
+
+    def __str__(self):
+        return f"{self.url}: {self.title} in {self.location} on {self.date}, no. {self.nr}"

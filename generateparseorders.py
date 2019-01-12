@@ -33,8 +33,8 @@ cursor = rawpages_collection.aggregate([
     {
         "$lookup": {
             "from": env("MONGODB_PAGEDETAILS_COLLECTION"),
-            "localField": "_id",
-            "foreignField": "_id",
+            "localField": "url",
+            "foreignField": "url",
             "as": "matched_docs"
         }
     },

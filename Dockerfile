@@ -13,6 +13,7 @@ COPY Order.py Order.py
 COPY PageDetails.py PageDetails.py
 COPY RawPageData.py RawPageData.py
 COPY SoupArticle.py SoupArticle.py
+COPY generateparseorders.py generateparseorders.py
 
 COPY main.py main.py
 

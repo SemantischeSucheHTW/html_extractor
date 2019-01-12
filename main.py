@@ -1,11 +1,10 @@
-from time import sleep
-
 import os
 
+from HTMLExtractor import HTMLExtractor
 from kafkasink import KafkaSink
 from kafkasource import KafkaSource
 from mongodbdao import MongoDBDao
-from HTMLExtractor import HTMLExtractor
+
 
 def env(key):
     value = os.environ.get(key)

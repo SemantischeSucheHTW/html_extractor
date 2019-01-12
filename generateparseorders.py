@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 
+import math
 import os
 from kafka import KafkaProducer
 from pymongo import MongoClient
@@ -28,13 +29,36 @@ mongo_client = MongoClient(
 
 rawpages_collection = mongo_client[env("MONGODB_DB")][env("MONGODB_RAWPAGES_COLLECTION")]
 
-doc_no = 1
+cursor = rawpages_collection.aggregate([
+    {
+        "$lookup": {
+            "from": env("MONGODB_PAGEDETAILS_COLLECTION"),
+            "localField": "_id",
+            "foreignField": "_id",
+            "as": "matched_docs"
+        }
+    },
+    {
+        "$match": {
+            #"matched_docs": {"$not": {"$size": 0}},
+            "matched_docs": [],
+        }
+    }
+])
 
-for rawpage in rawpages_collection.find():
+number = 1
+for rawpage in cursor:
     kafka_producer.send(
         env("KAFKA_PARSEORDERS_TOPIC"),
         key=rawpage["url"],
         value=Order(rawpage["url"], datetime.fromisoformat(rawpage["datetime"]))
     )
-    print(f"\rSent document no. {doc_no}, key: {rawpage['url']};{rawpage['datetime']}", end="")
-    doc_no = doc_no + 1
+
+    number = number + 1
+
+    threshold = 10 ** math.floor(math.log10(number)) * 5
+
+    if number % threshold == 0:
+        print(f"Sent document no. {number}, key: {rawpage['url']};{rawpage['datetime']}")
+
+print(f"Sent {number} documents.")

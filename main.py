@@ -18,6 +18,7 @@ orderSource = KafkaSource({
     "topic": env("KAFKA_PARSEORDERS_TOPIC"),
     "bootstrap_servers": env("KAFKA_BOOTSTRAP_SERVERS"),
     "group_id": env("KAFKA_PARSEORDERS_GROUP_ID"),
+    "auto_offset_reset": "earliest"
 })
 
 dao = MongoDBDao({

@@ -46,15 +46,16 @@ cursor = rawpages_collection.aggregate([
     }
 ])
 
-number = 1
+number = 0
 for rawpage in cursor:
+    number = number + 1
     kafka_producer.send(
         env("KAFKA_PARSEORDERS_TOPIC"),
         key=rawpage["url"],
         value=Order(rawpage["url"], datetime.fromisoformat(rawpage["datetime"]))
     )
 
-    number = number + 1
+
 
     threshold = 10 ** math.floor(math.log10(number)) * 5
 

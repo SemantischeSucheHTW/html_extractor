@@ -6,7 +6,7 @@ import os
 from kafka import KafkaProducer
 from pymongo import MongoClient
 
-from Order import Order
+from kafka_interface.Order import Order
 
 def env(key):
     value = os.environ.get(key)

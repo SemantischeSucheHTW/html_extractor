@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-from RawPageData import RawPageData
+from dao.RawPageData import RawPageData
 
 import datetime
 

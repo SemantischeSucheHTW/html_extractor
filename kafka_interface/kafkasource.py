@@ -1,5 +1,5 @@
 from kafka import KafkaConsumer
-from Order import Order
+from kafka_interface.Order import Order
 
 import json
 from datetime import datetime

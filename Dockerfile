@@ -5,14 +5,9 @@ RUN pip install kafka-python pymongo bs4
 RUN mkdir /html_extractor
 WORKDIR /html_extractor
 
-COPY HTMLExtractor.py HTMLExtractor.py
-COPY kafkasink.py kafkasink.py
-COPY kafkasource.py kafkasource.py
-COPY mongodbdao.py mongodbdao.py
-COPY Order.py Order.py
-COPY PageDetails.py PageDetails.py
-COPY RawPageData.py RawPageData.py
-COPY SoupArticle.py SoupArticle.py
+COPY dao dao
+COPY kafka_interface kafka_interface
+COPY extractor extractor
 COPY generateparseorders.py generateparseorders.py
 
 COPY main.py main.py

@@ -1,5 +1,5 @@
-from PageDetails import *
-from SoupArticle import *
+from extractor.PageDetails import *
+from extractor.SoupArticle import *
 import datetime
 import re
 

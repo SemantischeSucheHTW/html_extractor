@@ -1,9 +1,9 @@
 import os
 
-from HTMLExtractor import HTMLExtractor
-from kafkasink import KafkaSink
-from kafkasource import KafkaSource
-from mongodbdao import MongoDBDao
+from extractor.HTMLExtractor import HTMLExtractor
+from kafka_interface.kafkasink import KafkaSink
+from kafka_interface.kafkasource import KafkaSource
+from dao.mongodbdao import MongoDBDao
 
 
 def env(key):

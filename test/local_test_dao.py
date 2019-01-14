@@ -1,6 +1,6 @@
-from RawPageData import *
+from dao.RawPageData import RawPageData
 
-class DAO:
+class LocalTestDao:
  
     def getRawPageData(self, order):
         #file = open("exp_newest.html", "r")
